@@ -27,6 +27,13 @@ android {
             )
         }
     }
+
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -56,6 +63,12 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.gson.core)
     implementation(libs.okhttp.loggingInterceptor)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.mockito.kotlin)
+    androidTestImplementation(libs.mockito.inline)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
