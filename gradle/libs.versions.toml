@@ -15,6 +15,7 @@ gson = "2.10.1"
 okhttp = "4.11.0"
 mockito = "5.2.0"
 kotlinxCoroutinesTest = "1.7.3"
+daggerHilt = "2.51.1"
 
 
 [libraries]
@@ -46,4 +47,5 @@ mockito-inline = {group = "org.mockito", name = "mockito-inline", version.ref = 
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+dagger-hilt = {id = "com.google.dagger.hilt.android", version.ref = "daggerHilt"}
 

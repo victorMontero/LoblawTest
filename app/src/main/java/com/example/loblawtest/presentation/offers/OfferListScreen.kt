@@ -12,13 +12,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.loblawtest.di.OfferViewModelFactory
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OfferListScreen(offerViewModel: OfferViewModel = viewModel(factory = OfferViewModelFactory())) {
+fun OfferListScreen(offerViewModel: OfferViewModel = hiltViewModel()) {
     val offers = offerViewModel.offers.collectAsStateWithLifecycle().value
 
     Scaffold(topBar = {

@@ -4,8 +4,9 @@ import android.util.Log
 import com.example.loblawtest.data.ApiService
 import com.example.loblawtest.domain.model.Offer
 import com.example.loblawtest.domain.repository.OfferRepository
+import javax.inject.Inject
 
-class OfferRepositoryImpl(private val apiService: ApiService): OfferRepository {
+class OfferRepositoryImpl @Inject constructor(private val apiService: ApiService): OfferRepository {
     override suspend fun getOffers(): List<Offer> {
         return try {
             val products = apiService.getOffers()
