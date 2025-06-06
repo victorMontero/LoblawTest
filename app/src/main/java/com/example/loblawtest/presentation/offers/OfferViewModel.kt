@@ -1,18 +1,16 @@
-package com.example.loblawtest
+package com.example.loblawtest.presentation.offers
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.loblawtest.data.Product
-import com.example.loblawtest.data.RetrofitClient
-import com.example.loblawtest.data.repository.OfferRepository
-import com.example.loblawtest.domain.Offer
+import com.example.loblawtest.domain.model.Offer
+import com.example.loblawtest.domain.usecase.GetOffersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class OfferViewModel(private val offerRepository: OfferRepository) : ViewModel() {
+class OfferViewModel(private val getOffersUseCase: GetOffersUseCase) : ViewModel() {
 
     private var _offers: MutableStateFlow<List<Offer>> = MutableStateFlow(emptyList())
     val offers: StateFlow<List<Offer>> = _offers.asStateFlow()
@@ -24,7 +22,7 @@ class OfferViewModel(private val offerRepository: OfferRepository) : ViewModel()
     private fun fetchOffersFromApi() {
             viewModelScope.launch {
                 try {
-                    val offers : List<Offer> = offerRepository.getOffers()
+                    val offers : List<Offer> = getOffersUseCase()
                     _offers.value = offers
 
                 } catch (e: Exception){

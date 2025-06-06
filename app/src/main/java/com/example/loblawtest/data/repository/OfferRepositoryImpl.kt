@@ -2,7 +2,8 @@ package com.example.loblawtest.data.repository
 
 import android.util.Log
 import com.example.loblawtest.data.ApiService
-import com.example.loblawtest.domain.Offer
+import com.example.loblawtest.domain.model.Offer
+import com.example.loblawtest.domain.repository.OfferRepository
 
 class OfferRepositoryImpl(private val apiService: ApiService): OfferRepository {
     override suspend fun getOffers(): List<Offer> {

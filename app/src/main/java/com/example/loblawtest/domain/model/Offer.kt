@@ -1,4 +1,4 @@
-package com.example.loblawtest.domain
+package com.example.loblawtest.domain.model
 
 data class Offer(
     val id: Int,

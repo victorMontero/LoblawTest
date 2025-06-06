@@ -1,12 +1,11 @@
-package com.example.loblawtest.repository
+package com.example.loblawtest.data.repository
 
 import com.example.loblawtest.data.ApiService
 import com.example.loblawtest.data.Product
 import com.example.loblawtest.data.Rating
-import com.example.loblawtest.data.repository.OfferRepositoryImpl
-import com.example.loblawtest.domain.Offer
+import com.example.loblawtest.domain.model.Offer
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
@@ -37,7 +36,7 @@ class OfferRepositoryImplTest {
 
         val result = offerRepository.getOffers()
 
-        assertEquals(expectedOffers, result)
+        Assert.assertEquals(expectedOffers, result)
     }
 
     @Test
@@ -47,7 +46,7 @@ class OfferRepositoryImplTest {
 
         val result = offerRepository.getOffers()
 
-        assertEquals(expectedEmptyList, result)
+        Assert.assertEquals(expectedEmptyList, result)
 
     }
 
@@ -59,6 +58,6 @@ class OfferRepositoryImplTest {
 
         val result = offerRepository.getOffers()
 
-        assertEquals(expectedEmptyList, result)
+        Assert.assertEquals(expectedEmptyList, result)
     }
 }

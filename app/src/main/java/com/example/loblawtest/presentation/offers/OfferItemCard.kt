@@ -1,4 +1,4 @@
-package com.example.loblawtest
+package com.example.loblawtest.presentation.offers
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.loblawtest.domain.Offer
+import com.example.loblawtest.domain.model.Offer
 
 @Composable
 fun OfferItemCard(offer: Offer) {
@@ -52,8 +52,8 @@ fun OfferItemCardPreview() {
         OfferItemCard(
             offer = Offer(
                 id = 1,
-                productName = "Produto de Exemplo",
-                description = "Esta é uma descrição de exemplo para o produto em oferta.",
+                productName = "example",
+                description = "this is a product example description.",
                 points = 1000.0
             )
         )

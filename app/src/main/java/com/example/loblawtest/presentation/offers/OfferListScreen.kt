@@ -1,4 +1,4 @@
-package com.example.loblawtest
+package com.example.loblawtest.presentation.offers
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
