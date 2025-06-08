@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.loblawtest.presentation.offers.OfferListScreen
+import com.example.loblawtest.presentation.navigation.AppNavigation
 import com.example.loblawtest.ui.theme.LoblawTestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LoblawTestTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    OfferListScreen()
+                    AppNavigation()
                 }
             }
         }

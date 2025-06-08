@@ -1,9 +1,13 @@
 package com.example.loblawtest.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.loblawtest.data.ApiService
+import com.example.loblawtest.data.local.ShoppingListDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,4 +51,18 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideShoppingListDatabase(@ApplicationContext context: Context): ShoppingListDatabase {
+        return Room.databaseBuilder(
+            context,
+            ShoppingListDatabase::class.java,
+            "shopping_list_db"
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideShoppingItemDao(database: ShoppingListDatabase) = database.shoppingItemDao()
 }

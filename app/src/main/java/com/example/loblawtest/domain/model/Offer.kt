@@ -4,5 +4,6 @@ data class Offer(
     val id: Int,
     val productName: String,
     val description: String,
-    val points: Double
+    val points: Double,
+    val imgUrl: String
 )

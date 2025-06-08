@@ -16,7 +16,8 @@ class OfferRepositoryImpl @Inject constructor(private val apiService: ApiService
                     id = product.id,
                     productName =  product.title,
                     description = product.description,
-                    points = product.price
+                    points = product.price,
+                    imgUrl = product.image
                 )
             }
         } catch (e: Exception){
