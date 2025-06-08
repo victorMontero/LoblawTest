@@ -1,14 +1,14 @@
 package com.example.loblawtest.domain.usecase
 
-import com.example.loblawtest.domain.repository.OfferRepository
 import com.example.loblawtest.domain.model.Offer
+import com.example.loblawtest.domain.repository.OfferRepository
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock
-import org.mockito.kotlin.whenever
-import org.junit.Assert.assertEquals
 import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
 
 
 class GetOffersUseCaseTest {
@@ -25,7 +25,7 @@ class GetOffersUseCaseTest {
     @Test
     fun invoke_repositorySuccess_returnsData() = runTest {
         // Arrange
-        val fakeOffers = listOf(Offer(1, "Test", "Test desc", 1.0))
+        val fakeOffers = listOf(Offer(1, "Test", "Test desc", 1.0, ""))
         whenever(mockOfferRepository.getOffers()).thenReturn(fakeOffers)
 
         // Act

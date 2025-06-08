@@ -29,8 +29,8 @@ class OfferRepositoryImplTest {
             Product(2, "Product 2", 20.0, "Desc 2", "Category 2", "img2", Rating(4.0, 50))
         )
         val expectedOffers = listOf(
-            Offer(1, "Product 1", "Desc 1", 10.0),
-            Offer(2, "Product 2", "Desc 2", 20.0)
+            Offer(1, "Product 1", "Desc 1", 10.0, "img1"),
+            Offer(2, "Product 2", "Desc 2", 20.0, "img2")
         )
         whenever(mockApiService.getOffers()).thenReturn(fakeProducts)
 

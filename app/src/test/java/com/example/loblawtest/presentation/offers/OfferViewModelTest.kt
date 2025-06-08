@@ -33,7 +33,7 @@ class OfferViewModelTest {
     @Test
     fun `init_useCaseSuccess_updatesStateWithOffers`() = runTest {
         // Arrange
-        val fakeOffers = listOf(Offer(1, "Offer 1", "Desc 1", 100.0))
+        val fakeOffers = listOf(Offer(1, "Offer 1", "Desc 1", 100.0, ""))
         whenever(mockGetOffersUseCase.invoke()).thenReturn(fakeOffers)
 
         // Act
