@@ -38,7 +38,6 @@ fun OfferListScreen(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 titleContentColor = MaterialTheme.colorScheme.primary
             ),
-            // Adicionamos o botão de ação aqui
             actions = {
                 Button(
                     onClick = {
@@ -54,7 +53,6 @@ fun OfferListScreen(
     }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            // Adicionando o campo de busca
             TextField(
                 value = searchQuery,
                 onValueChange = offerViewModel::onSearchQueryChanged, // Referência da função
@@ -64,7 +62,6 @@ fun OfferListScreen(
                 label = { Text("Buscar por nome ou descrição...") },
                 singleLine = true
             )
-
             if (offers.isEmpty()) {
                 Text(
                     text = "Nenhuma oferta encontrada.",

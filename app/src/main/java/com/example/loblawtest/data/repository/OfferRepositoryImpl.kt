@@ -4,25 +4,32 @@ import android.util.Log
 import com.example.loblawtest.data.ApiService
 import com.example.loblawtest.domain.model.Offer
 import com.example.loblawtest.domain.repository.OfferRepository
+import com.example.loblawtest.util.Resource
 import javax.inject.Inject
 
 class OfferRepositoryImpl @Inject constructor(private val apiService: ApiService): OfferRepository {
-    override suspend fun getOffers(): List<Offer> {
+    override suspend fun getOffers(): Resource<List<Offer>> {
         return try {
-            val products = apiService.getOffers()
+            val response = apiService.getOffers()
 
-            products.map { product ->
-                Offer(
-                    id = product.id,
-                    productName =  product.title,
-                    description = product.description,
-                    points = product.price,
-                    imgUrl = product.image
-                )
+            if (response.isSuccessful){
+                val products = response.body()
+                val offers = products?.map { product ->
+                    Offer(
+                        id = product.id,
+                        productName = product.title,
+                        description = product.description,
+                        points = product.price,
+                        imgUrl = product.image
+                    )
+                } ?: emptyList()
+                Resource.Success(offers)
+            } else{
+                Resource.Error("Erro: ${response.code()} ${response.message()}")
             }
         } catch (e: Exception){
-            Log.e("OfferRepositoryImpl", "Erro ao buscar ofertas da API: ${e.message}", e)
-            emptyList()
+            Log.e("offersRespositoryImpl", "erro ao buscar ofertas: ${e.message}", e)
+            Resource.Error("falha na ocnexao")
         }
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.loblawtest.domain.model.Offer
 import com.example.loblawtest.domain.usecase.GetOffersUseCase
+import com.example.loblawtest.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -48,14 +49,18 @@ class OfferViewModel @Inject constructor(private val getOffersUseCase: GetOffers
 
     private fun fetchOffersFromApi() {
         viewModelScope.launch {
-            try {
-                val offers: List<Offer> = getOffersUseCase()
-                _allOffers.value = offers
+           when(val result = getOffersUseCase()){
+               is Resource.Success -> {
+                   _allOffers.value = result.data ?: emptyList()
+               }
+               is Resource.Error -> {
+                   Log.e("OfferViewModel", "Erro ao buscar ofertas: ${result.message}")
+                    _allOffers.value = emptyList()
+               }
+               is Resource.Loading -> {
 
-            } catch (e: Exception) {
-                Log.e("OfferViewModel", "Erro ao buscar ofertas da API: ${e.message}", e)
-                _allOffers.value = emptyList()
-            }
+               }
+           }
         }
     }
 }
